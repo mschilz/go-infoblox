@@ -1,7 +1,9 @@
 package infoblox
 
-import "fmt"
-import "encoding/json"
+import (
+	"encoding/json"
+	"fmt"
+)
 
 // RecordHost returns the HOST record resource
 // https://192.168.2.200/wapidoc/objects/record.host.html
@@ -15,7 +17,8 @@ func (c *Client) RecordHost() *Resource {
 // RecordHostObject defines the HOST record object's fields
 type RecordHostObject struct {
 	Object
-	Comment         string         `json:"comment,omitempty"`
+	Aliases         []string       `json:"aliases"`
+	Comment         string         `json:"comment"`
 	ConfigureForDNS bool           `json:"configure_for_dns"`
 	Ipv4Addrs       []HostIpv4Addr `json:"ipv4addrs,omitempty"`
 	Ipv6Addrs       []HostIpv6Addr `json:"ipv6addrs,omitempty"`
